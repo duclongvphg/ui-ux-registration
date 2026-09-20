@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration UI/UX Exercise</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons for lightweight icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Simple Navigation to switch between App and Notes -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <h1 class="logo">UI/UX<span>Registration</span></h1>
+            <div class="nav-tabs">
+                <button class="tab-btn active" data-target="app-view">App</button>
+                <button class="tab-btn" data-target="notes-view">UI/UX Notes & Wireframes</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- APP VIEW (Form & Success) -->
+        <section id="app-view" class="view-section active">
+            
+            <!-- Registration Form View -->
+            <div id="register-container" class="card-container active-view">
+                <div class="card-header">
+                    <h2>Create your account</h2>
+                    <p>Đăng ký tài khoản để bắt đầu sử dụng hệ thống</p>
+                </div>
+                
+                <form id="register-form" novalidate>
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="fullname">Họ và tên</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên" autocomplete="name">
+                        <span class="error-message" id="error-fullname"></span>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="example@email.com" autocomplete="email">
+                        <span class="error-message" id="error-email"></span>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password">Mật khẩu</label>
+                        <div class="input-with-icon">
+                            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" autocomplete="new-password">
+                            <button type="button" class="toggle-password" aria-label="Hiện/ẩn mật khẩu" data-target="password">
+                                <i data-feather="eye-off"></i>
+                            </button>
+                        </div>
+                        <p class="input-hint">Mật khẩu nên có ít nhất 8 ký tự, bao gồm chữ và số.</p>
+                        
+                        <!-- Password Strength Indicator -->
+                        <div class="password-strength-container" id="strength-container">
+                            <div class="strength-bars">
+                                <div class="bar" id="bar-1"></div>
+                                <div class="bar" id="bar-2"></div>
+                                <div class="bar" id="bar-3"></div>
+                            </div>
+                            <span class="strength-text" id="strength-text"></span>
+                        </div>
+                        <span class="error-message" id="error-password"></span>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+                        <label for="confirm-password">Xác nhận mật khẩu</label>
+                        <div class="input-with-icon">
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Nhập lại mật khẩu" autocomplete="new-password">
+                            <button type="button" class="toggle-password" aria-label="Hiện/ẩn mật khẩu" data-target="confirm-password">
+                                <i data-feather="eye-off"></i>
+                            </button>
+                        </div>
+                        <span class="error-message" id="error-confirm-password"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-primary" id="btn-submit">Đăng ký</button>
+                </form>
+            </div>
+
+            <!-- Success View -->
+            <div id="success-container" class="card-container">
+                <div class="success-content">
+                    <div class="success-icon">
+                        <i data-feather="check-circle"></i>
+                    </div>
+                    <h2>Đăng ký thành công!</h2>
+                    <p>Tài khoản của bạn đã được tạo thành công.</p>
+                    
+                    <div class="success-actions">
+                        <button class="btn-primary" id="btn-continue">Tiếp tục</button>
+                        <button class="btn-link" id="btn-back">Quay lại trang đăng ký</button>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- NOTES VIEW -->
+        <section id="notes-view" class="view-section">
+            <div class="document-container">
+                <article class="doc-section">
+                    <h2>13. Wireframe</h2>
+                    <div class="wireframe-grid">
+                        <div class="wireframe-card">
+                            <h3>Wireframe 1: Trang đăng ký</h3>
+                            <pre class="wireframe-mockup">
+[ LOGO ]
+
+Title: Create your account
+Subtitle: Đăng ký tài khoản để bắt đầu...
+
+[ Label: Họ và tên ]
+[ Input: Nhập họ và tên ]
+(Error space)
+
+[ Label: Email ]
+[ Input: example@email.com ]
+(Error space)
+
+[ Label: Mật khẩu ]
+[ Input: Nhập mật khẩu      (👁️) ]
+[Hint: Mật khẩu nên có ít nhất 8 ký tự...]
+[--- Strength Bar ---]
+(Error space)
+
+[ Label: Xác nhận mật khẩu ]
+[ Input: Nhập lại mật khẩu  (👁️) ]
+(Error space)
+
+[       Button: Đăng ký      ]
+                            </pre>
+                        </div>
+                        <div class="wireframe-card">
+                            <h3>Wireframe 2: Trang thành công</h3>
+                            <pre class="wireframe-mockup">
+        
+        
+        [ ( ✓ ) Icon lớn ]
+        
+    Title: Đăng ký thành công!
+  Subtitle: Tài khoản của bạn đã được 
+          tạo thành công.
+          
+          
+    [ Button: Tiếp tục ]
+    
+    [ Link: Quay lại trang đăng ký ]
+    
+                            </pre>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="doc-section">
+                    <h2>14. UI/UX Design Notes</h2>
+                    
+                    <div class="note-item">
+                        <h3>Usability</h3>
+                        <p>Form được thiết kế tinh gọn (minimalist), loại bỏ những trường không cần thiết. Quá trình di chuyển từ input này sang input khác mượt mà, hỗ trợ tốt Autofill trên trình duyệt.</p>
+                    </div>
+
+                    <div class="note-item">
+                        <h3>Visual Hierarchy</h3>
+                        <p>Tiêu đề "Create your account" to và rõ ràng. Label được đặt sát input tương ứng, sử dụng font chữ dễ đọc (Inter). Nút "Đăng ký" nổi bật nhất với màu xanh dương chủ đạo, tạo điểm nhấn thu hút ánh nhìn.</p>
+                    </div>
+
+                    <div class="note-item">
+                        <h3>Fitts' Law</h3>
+                        <p>Nút "Đăng ký" có kích thước lớn (chiều cao 48px), chiếm toàn bộ chiều rộng form, rất dễ dàng để click trên desktop và touch trên mobile. Icon hiện/ẩn mật khẩu được cấp một vùng padding rộng (~44x44px target area) để người dùng chạm bằng ngón tay không bị trượt.</p>
+                    </div>
+
+                    <div class="note-item">
+                        <h3>Feedback & Validation</h3>
+                        <p>Hệ thống không validate ngay khi vừa gõ (tránh gây khó chịu), nhưng nếu người dùng bấm Submit mà có lỗi, form sẽ hiện lỗi màu đỏ nhạt, nhẹ nhàng ngay dưới input tương ứng. Layout không bị nhảy do đã dự tính không gian cho error message (hoặc dùng display block một cách mềm mại). Có thanh đo độ mạnh mật khẩu (Password Strength) cập nhật real-time.</p>
+                    </div>
+
+                    <div class="note-item">
+                        <h3>Consistency</h3>
+                        <p>Sử dụng CSS Variables cho toàn bộ màu sắc, font chữ và spacing, đảm bảo tính đồng nhất giữa trang đăng ký và trang thành công.</p>
+                    </div>
+
+                    <div class="note-item">
+                        <h3>Responsive Design</h3>
+                        <p>Giao diện tự động co giãn. Ở Mobile (375px - 430px), form dùng padding an toàn và chiếm trọn không gian ngang để tối ưu vùng hiển thị. Ở Desktop (1024px+), form hiển thị dạng card nằm ở giữa màn hình.</p>
+                    </div>
+
+                    <div class="note-item">
+                        <h3>Accessibility</h3>
+                        <p>Các thẻ input đều liên kết rõ ràng với thẻ label thông qua thuộc tính <code>for</code>. Sử dụng <code>aria-label</code> cho các nút chỉ có icon. Trạng thái focus của input được làm rõ bằng outline/border màu primary, hỗ trợ điều hướng bằng phím Tab (Keyboard Navigation). Độ tương phản văn bản cao (màu tối trên nền sáng).</p>
+                    </div>
+
+                    <div class="note-item">
+                        <h3>User Flow</h3>
+                        <p>Trang đăng ký → Điền thông tin → Báo lỗi tại trường sai (nếu có) → Submit thành công → Chuyển sang màn hình "Đăng ký thành công" với dấu check xanh rõ ràng → Cung cấp nút Tiếp tục và Quay lại.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

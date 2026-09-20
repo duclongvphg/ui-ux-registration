@@ -1,0 +1,484 @@
+/* style.css - Registration UI/UX Exercise */
+
+:root {
+    /* Color Palette */
+    --primary-color: #3b82f6; /* Modern Blue */
+    --primary-hover: #2563eb;
+    --primary-active: #1d4ed8;
+    
+    --bg-color: #f3f4f6; /* Light gray for background */
+    --card-bg: #ffffff;
+    
+    --text-main: #111827; /* Dark text */
+    --text-muted: #6b7280; /* Gray text for hints */
+    
+    --border-color: #d1d5db;
+    --input-focus: #3b82f6;
+    
+    --error-color: #ef4444; /* Red for errors */
+    --error-bg: #fef2f2;
+    
+    --success-color: #10b981; /* Green for success */
+    
+    /* Spacing & Sizing */
+    --border-radius: 8px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    /* Fitts' Law target sizing */
+    --touch-target: 48px; 
+    
+    /* Typography */
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navigation */
+.top-nav {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-md) var(--spacing-lg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.logo span {
+    color: var(--primary-color);
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+.nav-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+}
+
+.tab-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.view-section {
+    display: none;
+    width: 100%;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.view-section.active {
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card Container (Form & Success) */
+.card-container {
+    display: none;
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 480px; /* Desktop width limit */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    margin: 0 auto;
+}
+
+.card-container.active-view {
+    display: block;
+}
+
+/* Header */
+.card-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.card-header h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.card-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-main);
+}
+
+input {
+    width: 100%;
+    height: var(--touch-target); /* Fitts' Law: 48px height */
+    padding: 0 var(--spacing-md);
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    transition: all 0.2s ease;
+    color: var(--text-main);
+}
+
+input::placeholder {
+    color: #9ca3af;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+input.is-invalid {
+    border-color: var(--error-color);
+    background-color: var(--error-bg);
+}
+
+input.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+/* Input with Icon */
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon input {
+    padding-right: 50px; /* Make room for icon */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    width: 40px;
+    height: 40px; /* Fitts' Law touch target */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: color 0.2s ease;
+}
+
+.toggle-password:hover, .toggle-password:focus {
+    color: var(--text-main);
+    background-color: var(--bg-color);
+    outline: none;
+}
+
+.toggle-password svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Hints and Errors */
+.input-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+}
+
+.error-message {
+    font-size: 0.85rem;
+    color: var(--error-color);
+    margin-top: 6px;
+    display: none;
+    font-weight: 500;
+}
+
+/* Password Strength */
+.password-strength-container {
+    margin-top: 8px;
+    display: none; /* Shown via JS */
+}
+
+.strength-bars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.strength-bars .bar {
+    height: 4px;
+    flex: 1;
+    background-color: var(--border-color);
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+.strength-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn-primary {
+    width: 100%;
+    height: var(--touch-target); /* Fitts' Law: 48px height */
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--spacing-sm);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-primary:active {
+    background-color: var(--primary-active);
+    transform: translateY(1px);
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 500;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.btn-link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Success View */
+.success-content {
+    text-align: center;
+    padding: var(--spacing-md) 0;
+}
+
+.success-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: #d1fae5;
+    color: var(--success-color);
+    border-radius: 50%;
+    margin-bottom: var(--spacing-lg);
+}
+
+.success-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.success-content h2 {
+    font-size: 1.75rem;
+    color: var(--text-main);
+    margin-bottom: var(--spacing-sm);
+}
+
+.success-content p {
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-xl);
+}
+
+.success-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Notes & Wireframes View */
+#notes-view .document-container {
+    max-width: 900px;
+    width: 100%;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.doc-section {
+    margin-bottom: 40px;
+}
+
+.doc-section h2 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.wireframe-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+.wireframe-card {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+}
+
+.wireframe-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.wireframe-mockup {
+    background-color: #fff;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #4b5563;
+    white-space: pre-wrap;
+    border: 1px dashed var(--border-color);
+}
+
+.note-item {
+    margin-bottom: var(--spacing-lg);
+}
+
+.note-item h3 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 4px;
+}
+
+.note-item p {
+    color: var(--text-main);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wireframe-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container, #notes-view .document-container {
+        padding: 30px 20px;
+        box-shadow: none; /* Flatter look on mobile */
+        border-radius: 0; /* Or keep small radius, but let's make it full width */
+    }
+    
+    .main-content {
+        padding: 0;
+        background-color: var(--card-bg);
+    }
+    
+    .card-container {
+        max-width: 100%;
+        border-radius: 0;
+    }
+    
+    /* Top nav changes on very small screens */
+    .nav-container {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+    
+    .nav-tabs {
+        justify-content: center;
+    }
+}
